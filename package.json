@@ -1,6 +1,7 @@
 {
   "name": "vuex-study",
   "version": "1.0.0",
+<<<<<<< HEAD
   "description": "A Vue.js project",
   "author": "BadWaka <1456683844@qq.com>",
   "private": true,
@@ -59,4 +60,26 @@
     "last 2 versions",
     "not ie <= 8"
   ]
+=======
+  "description": "vuex study",
+  "main": "index.js",
+  "dependencies": {
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BadWaka/vuex-study.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BadWaka/vuex-study/issues"
+  },
+  "homepage": "https://github.com/BadWaka/vuex-study#readme"
+>>>>>>> 0efeecfb22d2e2f473a72d65678f1c4441454a6d
 }
