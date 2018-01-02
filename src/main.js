@@ -43,4 +43,4 @@ console.log('store.state.count', store.state.count);
 /* eslint-disable no-new */
 new Vue({el: '#app', router, template: '<App/>', components: {
     App
-  }})
+  }});
