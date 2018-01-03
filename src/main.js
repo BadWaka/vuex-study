@@ -23,24 +23,22 @@ store.commit('increment');
 
 console.log('store.state.count', store.state.count);
 
-Vue.use(Vuex);
-
-const store = new Vuex.Store({
-  state: {
-    count: 0
-  },
-  mutations: {
-    increment(state) {
-      state.count++;
+const Counter = {
+  template: `<div>{{count}}</div>`,
+  computed: {
+    count() {
+      return store.state.count;
     }
   }
-});
-
-store.commit('increment');
-
-console.log('store.state.count', store.state.count);
+};
 
 /* eslint-disable no-new */
-new Vue({el: '#app', router, template: '<App/>', components: {
-    App
-  }});
+const app = new Vue({
+    el: '#app', 
+    store,
+    router, 
+    template: '<App/>', 
+    components: {
+      App
+    }
+});
