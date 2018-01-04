@@ -6,11 +6,42 @@ import router from './router'
 import Vuex from 'vuex';
 
 Vue.config.productionTip = false
+
+// 使用 Vuex
 Vue.use(Vuex);
 
+// 创建一个 store
 const store = new Vuex.Store({
   state: {
-    count: 0
+    count: 0,
+    todos: [
+      {
+        id: 1,
+        text: '...',
+        done: true
+      }, {
+        id: 2,
+        text: '...',
+        done: false
+      }
+    ]
+  },
+  getters: {
+    doneTodos: state => {
+      return state
+        .todos
+        .filter(todo => todo.done)
+    },
+    // Getter 也可以接受其他 getter 作为第二个参数
+    doneTodosCount(state, getters) {
+      return getters.doneTodos.length;
+    },
+    // 返回一个函数
+    getTodoById: (state) => (id) => {
+      return state
+        .todos
+        .find(todo => todo.id === id);
+    }
   },
   mutations: {
     increment(state) {
@@ -19,26 +50,17 @@ const store = new Vuex.Store({
   }
 });
 
+// 触发状态变更
 store.commit('increment');
-
-console.log('store.state.count', store.state.count);
-
-const Counter = {
-  template: `<div>{{count}}</div>`,
-  computed: {
-    count() {
-      return store.state.count;
-    }
-  }
-};
 
 /* eslint-disable no-new */
 const app = new Vue({
-    el: '#app', 
-    store,
-    router, 
-    template: '<App/>', 
-    components: {
-      App
-    }
+  el: '#app',
+  // 把 store 对象提供给 “store” 选项，这可以把 store 的实例注入所有的子组件
+  store,
+  router,
+  template: '<App/>',
+  components: {
+    App
+  }
 });
