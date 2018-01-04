@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuex from 'vuex';
+import {SOME_MUTATION} from './mutation-types';
 
 Vue.config.productionTip = false
 
@@ -44,14 +45,16 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-    increment(state) {
-      state.count++;
-    }
+    increment(state, payload) {
+      // 变更状态
+      state.count += payload.amount;
+    },
+    [SOME_MUTATION](state) {}
   }
 });
 
-// 触发状态变更
-store.commit('increment');
+// 触发状态变更 store.commit('increment', {amount: 10}); 对象风格的提交方式
+store.commit({type: 'increment', amount: 10});
 
 /* eslint-disable no-new */
 const app = new Vue({

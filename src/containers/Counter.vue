@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "Counter",
@@ -43,12 +43,18 @@ export default {
     }),
     // 使用对象展开运算符将 mapGetters 混入 computed 对象中
     ...mapGetters(["doneTodosCount", "anotherGetter"])
-  }
+  },
   //   // 当映射的计算属性的名称与 state 的子节点名称相同时，我们也可以给 mapState 传一个字符串数组
   //   computed: mapState([
   //       // 映射 this.count 为 store.state.count
   //       'count'
   //   ])
+  methods:{
+    ...mapMutations([
+      'increment',
+      'incrementBy',
+    ])
+  }
 };
 </script>
 
